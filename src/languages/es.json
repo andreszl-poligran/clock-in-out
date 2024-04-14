@@ -1,0 +1,161 @@
+{
+	"translation" : {
+		"login": {
+			"Password attempts exceeded":"Se han superado los intentos de contraseña",
+			"Pending sign-in attempt already in progress":"El intento de inicio de sesión pendiente ya está en curso",
+			"Incorrect username or password.":"Usuario o contraseña inválidos.",
+			"undefined":"",
+			"welcome_back": "¡Bienvenido a Clock In Out!",
+			"google_login": "Iniciar sesión con Google",
+			"or_login": "Iniciar Sesión",
+			"email": "Dirección de correo electrónico",
+			"pass": "Contraseña",
+			"keep_logged": "Mantenerme conectado",
+			"forgot_pass": "¿Olvidaste tu contraseña?",
+			"log_in": "Iniciar sesión",
+			"dont_have_account": "¿No tienes una cuenta?",
+			"sign_up": "REGISTRARSE",
+			"quote": "Sé eficiente, feliz y ecológico."
+		},
+		"forms": {
+			"sp_document": "El campo documento de identidad es obligatorio",   
+			"confirm":"Confirmar",
+			"loading":"Cargando...",
+			"field_required":"Campo requerido",
+			"all_fields_required": "Todos los campos son obligatorios",
+			"Required":"Todos los campos son obligatorios",
+			"email_@": "El campo de correo electrónico debe contener '@' en su contenido",
+			"phone_lenght": "El campo de teléfono debe tener 10 dígitos",
+			"pass_lenght": "La contraseña debe tener al menos 8 caracteres",
+			"pass_rexpression": "La contraseña debe contener al menos un dígito, una letra mayúscula, una letra minúscula y un carácter especial",
+			"pass_eq": "Las contraseñas deben ser iguales",
+			"email_required":"El campo correo correo electrónico es obligatorio",
+			"sp_name":"El campo nombre es obligatorio",
+			"sp_name_last":"El campo apellido es obligatorio",
+			"sp_company": "No se permiten caracteres especiales en el nombre de la empresa.",
+			"firstname3":"El nombre debe tener una longitud mínima de 3 caracteres",
+			"lastname3":"El Apellido debe tener una longitud mínima de 3 caracteres",
+			"Confirmation code cannot be empty":"El código de confirmación no puede estar vacío",
+			"Invalid verification code provided, please try again": "Se proporcionó un código de verificación no válido. Inténtelo de nuevo",
+			"Password does not conform to policy":"La contraseña debe contener al menos un dígito, una letra mayúscula, una letra minúscula y un carácter especial",
+			"Attempt limit exceeded, please try after some time.":"Se superó el límite de intentos. Inténtelo después de un tiempo.",
+			"Password must have numeric characters": "La contraseña debe tener caracteres numéricos.",
+			"Password must have symbol characters": "La contraseña debe tener caracteres de símbolo.",
+			"Password not long enough": "La contraseña no es lo suficientemente larga.",
+			"Password must have uppercase characters": "La contraseña debe tener caracteres en mayúsculas.",
+			"Password cannot be empty": "La contraseña no puede estar vacía.",
+			"Invalid verification code provided, please try again.": "Se proporcionó un código de verificación no válido. Inténtelo de nuevo.",
+			"Incorrect username or password.":"Usuario o contraseña inválidos.",
+			"required_search": "El campo es obligatorio"
+				
+		},
+		"register": {
+			"welcome": "¡Bienvenido!",
+			"general_information": "Información General",
+			"email_required": "Dirección de correo electrónico *",
+			"pass_req": "Contraseña *",
+			"pass_must": "La contraseña debe contener al menos un dígito, una letra mayúscula, una letra minúscula y un carácter especial",
+			"pass_conf": "Confirmar Contraseña *",
+			"already_account": "¿Ya tienes una cuenta?",
+			"email": "Dirección de correo electrónico",
+			"pass_con": "Confirmación de Contraseña",
+			"and":"y"
+		},
+		"recover_pass": {
+			"continue": "Continuar",
+			"recover": "Recuperar Contraseña",
+			"6_digit": "Ingresa el código de 6 dígitos enviado a ",
+			"code_required": "Código *",
+			"code": "Código",
+			"new_pass_req": "Nueva Contraseña *",
+			"new_pass": "Nueva Contraseña",
+			"save_new_pass": "Guardar nueva contraseña"
+		},
+		"personal": {
+			"com_personal_inf": "Completa tu información personal",
+			"personal_inf": "Información Personal",
+			"name_req": "Nombre *",
+			"name": "Nombre",
+			"last_name_req": "Apellido *",
+			"last_name": "Apellido"
+		},
+		"finish_reg": {
+			"code_req": "El campo del código es obligatorio",
+			"verify": "Verificar tu cuenta",
+			"conf_m": "Mensaje de confirmación",
+			"asix": "Se ha enviado un código de verificación de seis dígitos a tu número de teléfono +1 (530) 699 ****",
+			"conf_cod": "Código de confirmación",
+			"havent": "¿No has recibido un código?"
+		},
+		"form_complete": {
+			"finish": "Completa tu registro",
+			"this_is": "Este es tu ID de referente",
+			"number": "46754679",
+			"complete_g": "Completa tu información general",
+			"complete_p": "Completa tu información personal",
+			"complete_v": "Completa tus costos variables",
+			"didyou": "¿Has completado todos los pasos?",
+			"create": "Crea tu cuenta"
+		},
+		"verify_contact": {
+			"verify": "Verificar tu cuenta",
+			"conf_code": "Mensaje de confirmación",
+			"which": "¿Qué método te gustaría usar",
+			"to_verify": "para verificar tu cuenta",
+			"sendmail": "Enviar confirmación por correo",
+			"sendmsg": "Enviar confirmación por mensaje"
+		},
+		"mail_confirmation": {
+			"code_field": "El campo de código es obligatorio",
+			"verify_ac": "Verificar tu cuenta",
+			"confirmation": "Mensaje de confirmación",
+			"enter": "Ingresa el código de 6 dígitos que te enviamos a ",
+			"confirmation_code": "Código de confirmación",
+			"verify": "Verificar",
+			"havent": "¿No has recibido un código?",
+			"code_resent": "Código reenviado con éxito"
+		},
+		"sidebar": {
+			"clock_in_out": "Marcar",
+			"check_ins_outs": "Consultar",
+			"log_out": "Cerrar Sesión",
+			"pass":"Contraseña",
+			"loc":"Ubicación",
+			"loading":"Cargando...",
+			"error":"Lo sentimos, ha ocurrido un error",
+			"deal_finder":"Buscador de cargas"
+		},
+		"swal": {
+			"you_h": "Tienes",
+			"areyou": "¿Estás seguro?",
+			"remove": "¡Eliminado!",
+			"success": "Solicitud eliminada con éxito de la carpeta.",
+			"removeit": "Sí, elimínalo",
+			"cancel": "No, cancelar",
+			"youwont": "¡No podrás deshacer esto!",
+			"deleteit": "Eliminar",
+			"deleted": "¡Eliminado!",
+			"yescancel": "Sí, Cancelar",
+			"cancels": "Cancelar",
+			"canceled": "Cancelado"
+		},
+		"dashboard": {
+			"welcome2": "Bienvenido a",
+			"thisis": "Este es tu",
+
+			"andhere": "Y aquí está tu ",
+			"now": "Ahora, vayamos a tu",
+			"hello": "Hola,",
+			"waita": "Espera un minuto",
+			"load": "Cargando mensajes",
+			"search": "Buscar",
+			"source": "Fuente:",
+			"more": "aprender más",
+			"readm": "Leer más",
+			"days": "dias",
+			"unit":"Unidad:",
+			"area":"Area:",
+			"nores":"Ningun resultado encontrado."
+		}
+	}
+}
