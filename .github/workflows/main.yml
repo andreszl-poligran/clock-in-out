@@ -3,13 +3,12 @@ name: Deploy to S3 and CloudFront
 on:
   push:
     branches:
-      - develop
       - main
 jobs:
-  develop:
+  main:
     runs-on: ubuntu-latest
 
-    if: github.ref == 'refs/heads/develop'
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout repository
@@ -22,7 +21,6 @@ jobs:
 
       - name: Set Project Environment Variables
         run: |
-          echo "VITE_API_GET_CITIES=${{ secrets.VITE_API_GET_CITIES }}" >> $GITHUB_ENV
           echo "VITE_IDENTITY_POOL_REGION=${{ secrets.AWS_REGION }}" >> $GITHUB_ENV
           echo "VITE_USER_POOL_ID=${{ secrets.VITE_USER_POOL_ID }}" >> $GITHUB_ENV
           echo "VITE_USER_POOL_CLIENT_ID=${{ secrets.VITE_USER_POOL_CLIENT_ID }}" >> $GITHUB_ENV
