@@ -42,7 +42,7 @@ const MyComponent: React.FC<Props> = (props) => {
 
 	useEffect(() => {
 		Auth.currentAuthenticatedUser().then((user) => {
-			setRole(user.attributes.profile);
+			setRole(user?.attributes?.profile || ' ');
 		});
 	}, [])
 
