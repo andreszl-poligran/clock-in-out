@@ -1,3 +1,4 @@
+// @ts-ignore
 import { useState } from "react";
 import homeImage from '../../assets/home.png';
 import howToUseVideo from '../../assets/how-to-use.webm';
@@ -8,7 +9,20 @@ import { Link } from "react-router-dom";
 import InputForm from "../../components/forms/input-form.component";
 import LabelForm from "../../components/forms/label-form.component";
 
+ // @ts-ignore
+
 export default () => {
+
+	const mapContainer: any = {
+    style: { width: '100%', height: '500px' },
+    center: [40.7128, -74.0060],
+    zoom: 10
+  };
+
+	const tileLayer: any = {
+		url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  };
 
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -75,14 +89,12 @@ export default () => {
 						¡Nos encantaría saber de ti! Si tienes alguna pregunta, comentario o simplemente quieres ponerte en contacto con nosotros, no dudes en hacerlo a través de los siguientes medios. Estamos aquí para ayudarte en lo que necesites y esperamos poder brindarte la mejor asistencia posible.
 					</p>
 				</div>
+				
 
 				<div className="container mx-auto py-16 flex flex-col lg:flex-row items-center justify-center">
 					<div className="lg:w-1/2 mb-8 lg:mb-0 lg:mr-4">
-						<MapContainer center={[40.7128, -74.0060]} zoom={10} style={{ width: '100%', height: '500px' }}>
-							<TileLayer
-								url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-								attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-							/>
+						<MapContainer {...mapContainer}>
+							<TileLayer {...mapContainer} />
 							<Marker position={[40.7128, -74.0060]}>
 							</Marker>
 						</MapContainer>
