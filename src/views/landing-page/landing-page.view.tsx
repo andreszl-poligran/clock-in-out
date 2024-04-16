@@ -94,7 +94,7 @@ export default () => {
 				<div className="container mx-auto py-16 flex flex-col lg:flex-row items-center justify-center">
 					<div className="lg:w-1/2 mb-8 lg:mb-0 lg:mr-4">
 						<MapContainer {...mapContainer}>
-							<TileLayer {...mapContainer} />
+							<TileLayer {...tileLayer} />
 							<Marker position={[40.7128, -74.0060]}>
 							</Marker>
 						</MapContainer>
