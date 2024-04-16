@@ -76,6 +76,8 @@ export default () => {
 			}
 		} catch (err) {
 			setLoading(false)
+		} finally{
+			setLoading(false)
 		}
 	};
 

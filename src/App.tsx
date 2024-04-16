@@ -12,6 +12,7 @@ import LoadingFront from './loading-front'
 import FailedToLoad from './failed-to-load'
 import awsConfig from './awsexports'
 import hostInstance from './i18n'
+import LandingPage from './views/landing-page/landing-page.view';
 
 Amplify.configure(awsConfig)
 
@@ -23,8 +24,8 @@ export default () => {
 		<I18nextProvider i18n={hostInstance}>
 			<BrowserRouter>
 				<Routes>
+					<Route path="/" element={<LandingPage />} />
 					<Route path='/' element={<AuthLayout />}>
-						<Route path="/" element={<Navigate to="/iniciar-sesion" />} />
 						<Route path='iniciar-sesion' element={<SignIn />} />
 						<Route path='registrarse' element={<SingUp />} />
 						<Route path='recuperar-contrasena' element={<ForgetPassword />} />

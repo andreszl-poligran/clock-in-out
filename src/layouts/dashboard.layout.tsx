@@ -1,10 +1,10 @@
-import { Outlet } from "react-router-dom"
+import { useNavigate, Outlet } from "react-router-dom"
 import { useEffect } from "react"
 import { Auth } from 'aws-amplify';
 import { useTranslation } from "react-i18next";
 import Sidebar from "../components/Sidebar.component";
 import NavBar from "../components/nav-bar/navbar.component";
-import { CognitoUserSession } from 'amazon-cognito-identity-js';
+// import { CognitoUserSession } from 'amazon-cognito-identity-js';
 import { useMenu } from "../reducers/menu.reducer";
 import { useAuth } from "../reducers/auth.reducer";
 
@@ -12,6 +12,7 @@ export default () => {
 	const { i18n } = useTranslation();
 	const { signOut } = useAuth()
 	const { active, updateMenuActive } = useMenu()
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		if(!window) return
@@ -30,25 +31,18 @@ export default () => {
 				const session = await Auth.currentSession();
 				localStorage.setItem('token', session.getAccessToken().getJwtToken())
 				localStorage.setItem('iDtoken', session.getIdToken().getJwtToken())
-				
-				setInterval(async () => {
-					const cognitoUser = await Auth.currentAuthenticatedUser();
-					const { refreshToken } = cognitoUser.getSignInUserSession();
-					cognitoUser.refreshSession(refreshToken, (err: Error, session: CognitoUserSession) => {
-						if(err) {
-							signOut()
-						}
-						localStorage.setItem('token', session.getAccessToken().getJwtToken())
-						localStorage.setItem('iDtoken', session.getIdToken().getJwtToken())
-					})
-				}, 1000 * 60 * 170)
+				localStorage.setItem('token', session.getAccessToken().getJwtToken())
+				localStorage.setItem('iDtoken', session.getIdToken().getJwtToken())
 			} catch (error) {
-				signOut()
+				await signOut()
+				navigate('/iniciar-sesion')
 			}
 		}
 		authUser()
 	}, [])
 
+
+	
 	return (
 		<>
 			<main className="flex min-h-screen bg-[#CDCDCD]">
