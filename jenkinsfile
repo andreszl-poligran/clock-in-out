@@ -1,0 +1,79 @@
+pipeline {
+    agent any
+
+    environment {
+        NODE_VERSION = '18'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/andreszl-poligran/clock-in-out'
+            }
+        }
+        
+        stage('Install Node.js') {
+            steps {
+                sh '''
+                curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+                export NVM_DIR="$HOME/.nvm"
+                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                nvm install $NODE_VERSION
+                nvm use $NODE_VERSION
+                nvm alias default $NODE_VERSION
+                '''
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh '''
+                export NVM_DIR="$HOME/.nvm"
+                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                nvm use $NODE_VERSION
+                npm install
+                '''
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh '''
+                export NVM_DIR="$HOME/.nvm"
+                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                nvm use $NODE_VERSION
+                npm run build
+                '''
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh '''
+                export NVM_DIR="$HOME/.nvm"
+                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                nvm use $NODE_VERSION
+                npm test
+                '''
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo 'Deploying to production...'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
