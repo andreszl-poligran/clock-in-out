@@ -54,7 +54,7 @@ export default () => {
 						<img src={homeImage} alt="Imagen de Control de Asistencia" className="w-full h-auto" />
 					</div>
 					<div className="w-full md:w-1/2 text-center mx-auto">
-						<h1 className="text-4xl lg:text-6xl font-bold mb-4  md:mx-auto">Control de Asistencia Simplificado</h1>
+						<h1 className="text-4xl lg:text-6xl font-bold mb-4  md:mx-auto">Control de Asistencia Simplificado Test</h1>
 						<p className="text-xl lg:text-2xl font-bold mb-8 lg:mt-12 lg:mb-12 md:mx-auto mx-auto" style={{ maxWidth: 400 }}>
 							Registra fácilmente tus horas de trabajo con un solo clic
 						</p>
