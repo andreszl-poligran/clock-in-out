@@ -2,78 +2,37 @@ pipeline {
     agent any
 
     environment {
-        NODE_VERSION = '18'
+        VITE_FRONTEND_URL = 'http://localhost:5173'
+        VITE_IDENTITY_POOL_REGION = 'us-east-1'
+        VITE_USER_POOL_ID = 'us-east-1_yrCfJx2Uc'
+        VITE_USER_POOL_CLIENT_ID = '792a7lh3m144th275ghc8pbru3'
+        VITE_DOMAIN_COGNITO = ''
+        VITE_OAUTH_CLIENT_ID = ''
+        VITE_CLOCK_IN_OUT_API = 'https://zpg8pp9oa6.execute-api.us-east-1.amazonaws.com'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/andreszl-poligran/clock-in-out'
-            }
-        }
-        
-        stage('Install Node.js') {
-            steps {
-                sh '''
-                curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-                export NVM_DIR="$HOME/.nvm"
-                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                nvm install $NODE_VERSION
-                nvm use $NODE_VERSION
-                nvm alias default $NODE_VERSION
-                '''
+                git branch: 'main', url: 'https://github.com/andreszl-poligran/clock-in-out.git'
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Set Project Environment Variables and Build') {
             steps {
-                sh '''
-                export NVM_DIR="$HOME/.nvm"
-                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                nvm use $NODE_VERSION
-                npm install
-                '''
+                withEnv([
+                    "VITE_FRONTEND_URL=${VITE_FRONTEND_URL}",
+                    "VITE_IDENTITY_POOL_REGION=${VITE_IDENTITY_POOL_REGION}",
+                    "VITE_USER_POOL_ID=${VITE_USER_POOL_ID}",
+                    "VITE_USER_POOL_CLIENT_ID=${VITE_USER_POOL_CLIENT_ID}",
+                    "VITE_DOMAIN_COGNITO=${VITE_DOMAIN_COGNITO}",
+                    "VITE_OAUTH_CLIENT_ID=${VITE_OAUTH_CLIENT_ID}",
+                    "VITE_CLOCK_IN_OUT_API=${VITE_CLOCK_IN_OUT_API}"
+                ]) {
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
             }
-        }
-
-        stage('Build') {
-            steps {
-                sh '''
-                export NVM_DIR="$HOME/.nvm"
-                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                nvm use $NODE_VERSION
-                npm run build
-                '''
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh '''
-                export NVM_DIR="$HOME/.nvm"
-                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                nvm use $NODE_VERSION
-                npm test
-                '''
-            }
-        }
-
-        stage('Deploy') {
-            when {
-                branch 'main'
-            }
-            steps {
-                echo 'Deploying to production...'
-            }
-        }
-    }
-
-    post {
-        success {
-            echo 'Pipeline completed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed!'
         }
     }
 }
